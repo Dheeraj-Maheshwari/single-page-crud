@@ -1,0 +1,5 @@
+<% product.pictures.each do |picture| %>
+<%#=image_tag (picture.avatar.url,class: "img-responsive" ) %>
+<%=image_tag picture.avatar.url %>
+<%= link_to 'Hide', :back, id: "back"%>
+<%end%>

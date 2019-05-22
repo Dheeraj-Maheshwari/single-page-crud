@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Bootstrap Template</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Welcome </h1></br>
+      <h4><%=current_user.name%></h4>
+      <%if current_user.admin%>
+      <button  class ="btn btn-primary" id = "new_edit_product">Add Product</button>
+      <div id="add_product">
+        <%= render 'form'%>
+      </div>
+      <div id = "show_product"></div>
+      <%end%>
+      <h2>Products</h2>
+      <table class="table table-hover" id="products" >
+        <thead>
+          <tr>
+            <th>name</th>
+            <th>details</th>
+            <th>price</th>
+            <th colspan="2">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <%@products.each do  |product|%>
+          <%= render partial: "index", locals: { product: product } %>
+          <%end%>
+        </tbody>
+      </table>
+      <%= link_to "Logout", destroy_user_session_path, id: "logout", method: :delete, :class=>"btn btn-primary"%>
+    </div>
+  </body>
+</html>

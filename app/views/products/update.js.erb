@@ -1,0 +1,3 @@
+$('#products tbody').replaceWith("<%= j (render partial: 'index', locals: { product: @product }) %>");
+// document.getElementById("edit_product_<%=@product.id%>").reset();
+location.reload();

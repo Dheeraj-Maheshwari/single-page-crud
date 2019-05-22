@@ -1,0 +1,13 @@
+<%= form_for @product , remote: true ,:html => {:multipart => true, :name =>"myform",:onsubmit => "return validate();" } , remote: true do |f|%>
+  <%= f.label :name%>:   </br>
+  <%= f.text_field :name ,id: "name", placeholder: 'Name' , required: true %><br/>
+  <%= f.label :details %>:</br>
+  <%= f.text_field :details ,id: "details", placeholder: 'details' , required: true%><br/>
+  <%= f.label :price %>:</br>
+  <%= f.number_field :price ,id: "price", placeholder: 'price' ,  min: 1 , required: true%><br/>
+  <%= f.label :available %>:
+  <%= f.check_box :available %><br/>
+  <%= f.label :Pictures %> :
+  <%= f.file_field :avatar, :multiple => true , onchange: "validateFiles(this);", name: "pictures[avatars][]", id: "pic", required: true %><br/>
+  <%= f.submit "Save Product" ,id: "save" %>
+<%end%>
